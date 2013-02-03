@@ -1,4 +1,4 @@
 LucasIDE
-========
+======
 
-Environnement de développement pour le langage d'algorithmique du DUT INFORMATIQUE de REIMS
+Environnement de développement intégré pour le langage d'algorithmique universitaire du DUT INFORMATIQUE de REIMS

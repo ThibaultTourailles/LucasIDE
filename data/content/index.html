@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>LUCASIDE</title>
+	<link type="text/css" href="css/smoothness/jquery-ui-1.9.2.custom.css" rel="stylesheet" />	
+	<link rel="stylesheet" type="text/css" href="css/smoothness/jquery.gritter.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet"  type="text/css" href="css/jqueryFileTree.css">
+	<link rel="stylesheet"  type="text/css" href="css/jquerycontextMenu.css">	
+</head>
+<body onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='.. lel .. '; return true;" > 
+<!-- test -->
+
+<!-- Edit View -->
+<div id="edit-view">
+	<!-- Workspace -->
+	<div id="workspace-list" class="context-menu-workspace">
+	</div>
+	
+	<div id="tabs">
+	    <ul id="menu">
+	    </ul>
+	</div>
+	
+	<div id="dialog-workspace-form" title="Ajout">
+		  <form>
+		  <fieldset>
+			<span id="namelabelBegin"></span><input type="text" name="fileName" id="fileName" class="text ui-widget-content ui-corner-all" /><span id="namelabelEnd"></span>
+		  </fieldset>
+		  </form>
+	</div>
+
+	<!-- Modal dialog save -->
+	<div id="dialog-confirm-save" title="Sauvegarder fichier modifié">
+	  <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+	  <p>Vous fermez cet onglet sans enregistrer les modifications.</p> 
+	  <p>Voulez vous le sauvegarder ?</p>
+	</div>
+	
+	<!-- Welcome Tab content -->
+	<div id="welcome">
+		<img src="/img/tuto1.jpg" alt="tuto.jpg" width='1361' height ='765'/>
+	</div>
+
+	<!-- Modal Theme change -->
+	<div id="dialog-theme-change" title="Changer le thème de l'éditeur">
+	  <p class="validateTips">Sélectionnez un thème et cliquez sur "Changer le thème".</p>	 
+	  <form>
+		<select id="themeChooser" size="1" value="textmate"><optgroup label="bright"><option value="chrome">chrome</option><option value="clouds">clouds</option><option value="crimson_editor">crimson_editor</option><option value="dawn">dawn</option><option value="dreamweaver">dreamweaver</option><option value="eclipse">eclipse</option><option value="github">github</option><option value="solarized_light">solarized_light</option><option value="textmate">textmate</option><option value="tomorrow">tomorrow</option><option value="xcode">xcode</option></optgroup><optgroup label="dark"><option value="clouds_midnight">clouds_midnight</option><option value="cobalt">cobalt</option><option value="idle_fingers">idle_fingers</option><option value="kr_theme">kr_theme</option><option value="merbivore">merbivore</option><option value="merbivore_soft">merbivore_soft</option><option value="mono_industrial">mono_industrial</option><option value="monokai">monokai</option><option value="pastel_on_dark">pastel_on_dark</option><option value="solarized_dark">solarized_dark</option><option value="tomorrow_night">tomorrow_night</option><option value="tomorrow_night_blue">tomorrow_night_blue</option><option value="tomorrow_night_bright">tomorrow_night_bright</option><option value="tomorrow_night_eighties">tomorrow_night_eighties</option><option value="twilight">twilight</option><option value="vibrant_ink">vibrant_ink</option></optgroup></select>
+	  </form>
+	</div>
+	
+	<!-- Modal dialog launch config -->
+	<div id="dialog-launch-config" title="Configuration de lancement">
+		<form onSubmit='return false;'>		
+			<p><input type="radio" name ="server" value="distant" id="distant">
+			<label for="distant">Serveur distant : <input id ="address" type="text"></label></p>
+			<p><input type="radio" name ="server" value="local" id="local">
+			<label for="local">Serveur local</label></p>
+		</form>
+	</div>
+	
+</div>	
+
+<!-- Launch View -->
+<div id="launch-view">
+	<div id="left">
+
+    <div id="memoryDiv"> 
+      <table id="memory"> 
+      </table> 
+    </div> 
+
+    <div id="represDiv">
+      <div id="canvas">
+        <div id="currentLine"></div>
+        <div id="movElem"></div>
+      </div>
+    </div>
+	
+    <div id="stackDiv">
+      <div id="stack"></div>
+    </div>
+  </div>
+
+  <div id="right">
+    <div id="codeDiv">
+		<div id="code">	</div>
+    </div>
+
+
+    <div id="terminalDiv">
+      <div id="terminal">
+          <div>
+            <span class="line">Welcome to LucasIDE's shell</span>
+          </div>
+      </div>
+    </div>
+	
+	
+  </div>
+</div>
+<!-- Prototype--><script type="text/javascript" src="js/jquery/prototype.js"></script>
+<!-- JQuery -->	<script src="js/jquery/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+<!-- JQuery UI --> <script src="js/jquery/jquery-ui-1.9.2.custom.min.js" type="text/javascript" charset="utf-8"></script>
+<!-- Gritter --><script src="js/jquery/jquery.gritter.js" type="text/javascript" charset="utf-8"></script>
+<!-- Ace --><script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<!-- Easing --><script src="js/jquery.easing.js" type="text/javascript" charset="utf-8"></script>
+<!-- TabManager --><script src="js/tabmanager.js" type="text/javascript" charset="utf-8"></script>
+<!-- RunConfig --><script src="js/runconfig.js" type="text/javascript" charset="utf-8"></script>
+<!-- WorkspaceManager --><script src="js/workspacemanager.js" type="text/javascript" charset="utf-8"></script>
+<!-- JQuery File Tree --><script src="js/jqueryFileTree.js" type="text/javascript" charset="utf-8"></script>
+<!-- JQuery Context Menu--><script src="js/jquerycontextMenu.js" type="text/javascript" charset="utf-8"></script>
+<!-- JQuery Position--><script src="js/jquery.ui.position.js" type="text/javascript" charset="utf-8"></script>
+<!-- JQuery ScrollTo--><script src="js/jquery/jquery.scrollTo.js" type="text/javascript" charset="utf-8"></script>
+<!-- Memory Manager--><script src="js/memorymanager.js" type="text/javascript"charset="utf-8"></script>
+<!-- Animation Manager--> <script src="js/animationmanager.js" type="text/javascript" charset="utf-8"></script>
+<!-- Main --> <script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+    
+	<script type="text/javascript">
+		$(window).on("load" , function(){
+			launcheditor = ace.edit("codeDiv");
+			launcheditor.setValue("");
+			launcheditor.setTheme(TabManager.theme);
+			launcheditor.getSession().setMode("ace/mode/lucas");
+			launcheditor.setReadOnly(true);	
+			launcheditor.setShowPrintMargin(false);
+			launcheditor.getSession().setTabSize(4);
+			launcheditor.getSession().setUseSoftTabs(true);
+			launcheditor.on("focus", function(){
+			$.gritter.add({
+								title: 'Astuce',
+								text: 'Vous ne pouvez pas éditer dans ce mode',
+							});
+			});
+		});
+	</script>
+	
+</body>
+</html>

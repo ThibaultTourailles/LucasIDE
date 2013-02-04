@@ -1,0 +1,41 @@
+PROGRAMME Test ()
+     fibonacci( Entier VAL a ) Entier
+     {
+     	SI		a == 0	ALORS 	RETOURNER 0
+     	SINONSI	a == 1	ALORS 	RETOURNER 1
+     	SINON					RETOURNER fibonacci( a - 2 ) + fibonacci( a - 1 )
+     }
+     echange( Entier REF a, Entier REF b )
+     {
+     	Entier temp()
+     	temp = a
+     	a = b
+     	b = temp
+     }
+{
+	Entier x()
+	Entier y()
+
+	Out.ecrire( "Test de fibonacci(Entier VAL), fonction récursive" )
+	TANTQUE x < 10 FAIRE {
+		Out.ecrire( fibonacci( x ) )
+		x = x + 1
+	}
+
+	Out.ecrire( "Test de echange(Entier REF, Entier REF), fonction avec passage par Référence" )
+	Out.ecrire( " x : " )
+	Out.ecrire( x )
+	Out.ecrire( " y : " )
+	Out.ecrire( y )
+
+	Out.ecrire( "Echange des valeurs" )
+	echange( x, y )
+
+	Out.ecrire( " x : " )
+	Out.ecrire( x )
+	Out.ecrire( " y : " )
+	Out.ecrire( y )
+
+	Out.ecrire( "Test de" + " concaténation" + ": OK")
+	Out.ecrire( "Test d'addition de Chc et de Ca" + 'r' + ':' + ' ' + "OK" )
+}

@@ -105,7 +105,7 @@ class NoeudAttrape:
 		if testObjetRetour( res ): 
 			if res.resultat.typeObj != self.typeAttendu:
 				raise Exception("Type de retour non valide : %s attendu, %s donné" % ( self.typeAttendu, res.resultat.typeObj ) )
-		return res.executer(espace)
+			return res.executer(espace)
 
 class NoeudBlocSimple:
 	def __init__(self, listeNoeudExpression):
@@ -214,7 +214,7 @@ class NoeudDeclarationVariable:
 		self.profondeur = profondeur
 
 	def copier(self):
-		return NoeudDeclaration( self.classeNative, self.nom, self.noeudExpression.copier(), self.profondeur)
+		return NoeudDeclarationVariable( self.classeNative, self.nom, self.noeudExpression.copier(), self.profondeur)
 		
 	def executer(self, espace):
 		variables[espace].ajouter(self.nom, self.noeudExpression.executer(espace), self.profondeur)
@@ -300,6 +300,7 @@ class NoeudAff:
 		return NoeudAff( self.noeudExpression.copier() )
 
 	def executer(self, espace):
-		sortieElem = document.createElement("sortie")
-		sortieElem.appendChild(document.createTextNode(str(self.noeudExpression.executer(espace))))
-		NoeudProgramme.domRes.appendChild(sortieElem)
+		print self.noeudExpression.executer(espace)
+#		sortieElem = document.createElement("sortie")
+#		sortieElem.appendChild(document.createTextNode(str(self.noeudExpression.executer(espace))))
+#		NoeudProgramme.domRes.appendChild(sortieElem)

@@ -8,7 +8,7 @@ class Lanceur:
 
 	@staticmethod
 	def lanceExceptInst(nomClasse,x):
-		raise LucasException("Instanciation d'un `" + nomClasse + "` impossible a partir d'un `" + x + "`.")
+		raise LucasException("Instanciation d'un `" + nomClasse + "` impossible a partir d'un `" + str(x) + "`.")
 
 	@staticmethod
 	def lanceExceptOper(nomClasse,op,x=None):
@@ -107,18 +107,19 @@ class DicOp:
 
 	,'Booleen' : 	{
 
-			 'inst' : bool
+			 'inst' : int
 
 			,'cast' :		{
 				 'str'		: lambda x : 'VRAI' if x else 'FAUX'
 				,'bool'		: bool
+				,'int'		: int
 							}
 
 			,'Booleen'	: 	{ 
-				 '=='		:	( 'Booleen', bool.__eq__ )
-				,'!='		:	( 'Booleen', bool.__ne__ )
-				,'ET'		:	( 'Booleen', bool.__rand__ )
-				,'OU'		:	( 'Booleen', bool.__ror__ )
+				 '=='		:	( 'Booleen', int.__eq__ )
+				,'!='		:	( 'Booleen', int.__ne__ )
+				,'ET'		:	( 'Booleen', lambda x,y : 1 if x&y else 0 )
+				,'OU'		:	( 'Booleen', lambda x,y : 1 if x|y else 0 )
 				,'NON'		:	( 'Booleen', lambda x : not x )
 							}
 		}	# Fin type BOOLEEN
@@ -285,10 +286,12 @@ class Booleen(Natif):
 	typeObj = 'Booleen'
 
 	def __init__(self,x):
-		if type(x) is bool:
-			self.val = bool(x)
+		if type(x) is int:
+			self.val = int(x)
+		elif type(x) is bool:
+			self.val = 1 if x else 0
 		elif isinstance(x,Booleen):
-			self.val = bool(x.val)
+			self.val = int(x.val)
 		else: 
 			Lanceur.lanceExceptInst(Booleen.typeObj,x)
 

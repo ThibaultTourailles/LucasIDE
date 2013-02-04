@@ -46,7 +46,7 @@ def p_decl_fcts(p):
 	'''decl_fcts : decl_fct'''
 
 def p_fins_de_ligne_AGREG(p):
-	'''fins_de_ligne : fin_de_ligne FDL'''
+	'''fins_de_ligne : fins_de_ligne FDL'''
 
 def p_fins_de_ligne(p):
 	'''fins_de_ligne : fin_de_ligne'''
@@ -162,11 +162,11 @@ def p_sinon(p):
 	
 def p_sinon_ligne(p):
 	'''sinon_ligne : SINON instruction'''
-	p[0] = ConditionInstruction( NoeudObjet( Booleen(True) ), p[2], 'sinon' )
+	p[0] = ConditionInstruction( NoeudObjet( Booleen( 1 ) ), p[2], 'sinon' )
 
 def p_sinon_bloc(p):
 	'''sinon_bloc : sinon_ou_sinonfdl bloc_simple '''
-	p[0] = ConditionInstruction( NoeudObjet( Booleen(True) ), p[2], 'sinon' )
+	p[0] = ConditionInstruction( NoeudObjet( Booleen( 1 ) ), p[2], 'sinon' )
 
 def p_sinon_ou_sinonfdl(p):
 	'''sinon_ou_sinonfdl : SINON FDL
@@ -429,7 +429,7 @@ def p_declaration_booleen_arg(p):
 	   				   
 def p_declaration_booleen_def(p):
 	'''declaration_booleen_def : DCL_BOO MOT PRG PRD'''
-	p[0] = NoeudDeclarationVariable( 'Booleen', p[2], NoeudObjet( Booleen(False) ), p.lexer.level )
+	p[0] = NoeudDeclarationVariable( 'Booleen', p[2], NoeudObjet( Booleen(0) ), p.lexer.level )
 
 def p_declaration_car(p):
 	'''declaration_car : declaration_car_arg
@@ -604,11 +604,11 @@ def p_booleen(p):
 	   
 def p_booleen_vrai(p):
 	'''booleen_vrai : VRAI'''
-	p[0] = NoeudObjet( Booleen( True ) )
+	p[0] = NoeudObjet( Booleen( 1 ) )
 
 def p_booleen_faux(p):
 	'''booleen_faux : FAUX'''
-	p[0] = NoeudObjet( Booleen( False ) )
+	p[0] = NoeudObjet( Booleen( 0 ) )
 
 
 # __CARARCTÈRE__

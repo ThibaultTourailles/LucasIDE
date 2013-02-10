@@ -13,3 +13,5 @@ Développeurs :
   * SAINT-OMER Anne-Sophie
   * TOURAILLES Thibault
   * WATTIER Antoine
+
+Certains antivirus considèrent soapclient.exe et soapserver.exe comme vérolés, il s'agit en réalité d'un faux positif dû au système de packaging pour les scripts python.
